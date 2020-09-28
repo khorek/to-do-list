@@ -4,7 +4,25 @@ let addMessage = document.querySelector('.message'),
 
 let todoList = [];
 
-// Подтягиваем данные сохраненные в Local Storage
+// Основная фукнция:
+
+function displayMessages() {
+    let displayMessage = '';
+    if (todoList.length === 0) {
+        todo.innerHTML = '';
+    }
+    todoList.forEach(function (item, i) {
+        displayMessage += `
+            <li>
+                <input type='checkbox' id='item_${i}' ${item.checked ? 'checked' : ''}>
+                <label for='item_${i}' class="${item.important ? 'important' : ''}">${item.todo}</label>  
+            </li>
+        `;
+        todo.innerHTML = displayMessage;
+    });
+}
+
+// Подтягиваем данные сохраненные в Local Storage:
 if (localStorage.getItem('todo')) {
     todoList = JSON.parse(localStorage.getItem('todo'));
     displayMessages();
@@ -24,25 +42,7 @@ addButton.addEventListener('click', function () {
     addMessage.value = '';
 });
 
-// Основная фукнция
-
-function displayMessages() {
-    let displayMessage = '';
-    if (todoList.length === 0) {
-        todo.innerHTML = '';
-    }
-    todoList.forEach(function (item, i) {
-        displayMessage += `
-            <li>
-                <input type='checkbox' id='item_${i}' ${item.checked ? 'checked' : ''}>
-                <label for='item_${i}' class="${item.important ? 'important' : ''}">${item.todo}</label>  
-            </li>
-        `;
-        todo.innerHTML = displayMessage;
-    });
-}
-
-// Добавляем checked 
+// Добавляем checked: 
 
 todo.addEventListener('change', function () {
     let idInput = event.target.getAttribute('id');
@@ -55,7 +55,7 @@ todo.addEventListener('change', function () {
     });
 });
 
-// Подчеркиваем важные события
+// Подчеркиваем важные события:
 
 todo.addEventListener('contextmenu', function (event) {
     event.preventDefault();
