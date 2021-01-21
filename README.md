@@ -1,2 +1,2 @@
-# App-To-Do-List
- My first to do list
+# App To-Do List
+Simple app "To-Do list"
