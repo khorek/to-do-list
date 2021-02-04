@@ -1,2 +1,4 @@
 # App To-Do List
-Simple app "To-Do list"
+✔ Приложение "TO-DO List" для ведения списка дел.
+
+Приложение разработано на JS с применением CSS, bootstrap и возможностью хранить данные в LocalStorage.
